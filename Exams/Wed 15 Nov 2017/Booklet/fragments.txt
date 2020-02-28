@@ -1,0 +1,61 @@
+// Part 3
+void remove(int* &array, int &array_len, int pos)
+{
+	if (!array || array_len <= 1) {
+		cout << "invalid array" << endl;
+		return;
+	}
+	if (pos < 0 || pos >= array_len) {
+		cout << "pos is out of range" << endl;
+		return;
+	}
+
+	// new array length after removal
+	array_len--;
+	// new array
+	int* temp = new int[array_len];
+	for (int i = 0; i < pos; i++) temp[i] = array[i];
+	for (int i = pos; i < array_len; i++) temp[i] = array[i + 1];
+
+	// delete original array
+	delete[] array;
+	// set the new array
+	array = temp;
+}
+
+// Part 4
+int main()
+{
+	// a base class pointer
+	uConvert* base_ptr = 0;
+
+	// menu to take input from the users
+	cout << "\nEnter 1 for litre to gallon conversion\n"
+		<< "Enter 2 for Fahrenheit to Celsius conversion\n"
+		<< "Enter 3 for feet to meter conversion\n";
+	int option;
+	cin >> option;
+
+	// pointing base_ptr to the derived object of the user's choice
+	switch (option) {
+	case 1:
+		base_ptr = new l2g;
+		break;
+	case 2:
+		base_ptr = new f2c;
+		break;
+	case 3:
+		base_ptr = new f2m;
+		break;
+	default:
+		return 0;
+	}
+
+	// invoking the conversion
+	base_ptr->read_unit();
+	base_ptr->convert();
+	base_ptr->print();
+
+	delete base_ptr;
+	return 0;
+}
