@@ -1,1 +1,1 @@
-# c-plus-plus-practicals
+# C++ practicals and exams in 2018 - 2019
