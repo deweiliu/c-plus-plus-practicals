@@ -1,7 +1,7 @@
 # Visual Studio cache files
 *.vs/
-*/x64/*
-*/Debug/*
+*x64/*
+*Debug/*
 *.vcxproj.user
 
 # Prerequisites
